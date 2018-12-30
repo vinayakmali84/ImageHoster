@@ -32,8 +32,6 @@ public class ImageController {
     @Autowired
     private CommentService commentService;
 
-    public ImageController(){}
-
     //This method displays all the images in the user home page after successful login
     @RequestMapping("images")
     public String getUserImages(Model model) {
@@ -80,6 +78,7 @@ public class ImageController {
 //        return "images/image";
 //    }
 
+    //This method returns image based on imageId
     @RequestMapping("/images/{id}")
     public String showImageByImgId(@PathVariable("id") Integer id, Model model, HttpSession session) {
         Image image = imageService.getImage(id);
@@ -211,6 +210,7 @@ public class ImageController {
         return "redirect:/images";
     }
 
+    //This method creates new comment for image
     @RequestMapping(value = "/image/{id}/{title}/comments", method = RequestMethod.POST)
     public String createComment(@PathVariable("id") Integer imageId,@PathVariable("title") String imageTitle,@RequestParam("comment") String comment, HttpSession session) throws IOException {
 

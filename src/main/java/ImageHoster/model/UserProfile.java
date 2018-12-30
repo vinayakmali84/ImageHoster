@@ -18,12 +18,14 @@ public class UserProfile {
     @Column(name = "id")
     private Integer id;
 
+    //Here the column name is explicitly mentioned as 'full_name'
     @Column(name = "full_name")
     private String fullName;
 
+    //Here the column name is explicitly mentioned as 'email_address'
     @Column(name = "email_address")
     private String emailAddress;
-
+    //Here the column name is explicitly mentioned as 'mobile_number'
     @Column(name = "mobile_number")
     private String mobileNumber;
 

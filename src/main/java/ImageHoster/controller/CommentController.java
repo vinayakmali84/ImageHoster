@@ -28,6 +28,7 @@ public class CommentController {
     @Autowired
     private ImageService imageService;
 
+    //This method creates new comment for image
     @RequestMapping(value = "/image/{imageId}/{imageTitle}/comments", method = RequestMethod.POST)
     public String createComment(@PathVariable("imageId") Integer imageId, @PathVariable("imageTitle") String imageTitle, @RequestParam("comment") String text,Comment comment, HttpSession session) throws IOException {
         User user = (User) session.getAttribute("loggeduser");

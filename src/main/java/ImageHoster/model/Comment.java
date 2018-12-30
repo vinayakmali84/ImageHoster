@@ -41,7 +41,9 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User user;
 
-
+    //The 'Comments' table is mapped to 'image' table with Many:One mapping
+    //One Comment can have only one image  but one image can have multiple images
+    //FetchType is EAGER
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "image_id")
     private Image image;

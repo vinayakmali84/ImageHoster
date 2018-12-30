@@ -57,6 +57,7 @@ public class Image {
     //@OneToMany(fetch = FetchType.LAZY)
     //private List<Comment> comments = new ArrayList<>();
 
+    //This attribute is One to Many mapping between Image & Comments
     @OneToMany(mappedBy = "image", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<Comment> comments = new ArrayList<>();
 

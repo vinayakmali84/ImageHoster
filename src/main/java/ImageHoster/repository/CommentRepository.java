@@ -14,7 +14,7 @@ public class CommentRepository {
     private EntityManagerFactory emf;
 
 
-    //The method receives the Image object to be persisted in the database
+    //The method adds the Comment object to be persisted in the database
     //Creates an instance of EntityManager
     //Starts a transaction
     //The transaction is committed if it is successful

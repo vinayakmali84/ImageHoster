@@ -11,10 +11,12 @@ public class TagService {
     @Autowired
     private TagRepository tagRepository;
 
+    //Gets Tag by  Name
     public Tag getTagByName(String title) {
         return tagRepository.findTag(title);
     }
 
+    //Creates new Tag
     public Tag createTag(Tag tag) {
         return tagRepository.createTag(tag);
     }

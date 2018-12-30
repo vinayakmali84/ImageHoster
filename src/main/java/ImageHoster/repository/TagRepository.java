@@ -10,6 +10,7 @@ public class TagRepository {
     @PersistenceUnit(unitName = "imageHoster")
     private EntityManagerFactory emf;
 
+    //Creates tags & stores in database
     public Tag createTag(Tag tag) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
@@ -24,6 +25,7 @@ public class TagRepository {
         return tag;
     }
 
+    //Finds tags from database
     public Tag findTag(String tagName) {
         EntityManager em = emf.createEntityManager();
         try {
