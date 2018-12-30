@@ -32,6 +32,8 @@ public class ImageController {
     @Autowired
     private CommentService commentService;
 
+    public ImageController(){}
+
     //This method displays all the images in the user home page after successful login
     @RequestMapping("images")
     public String getUserImages(Model model) {
@@ -50,19 +52,36 @@ public class ImageController {
     //Also now you need to add the tags of an image in the Model type object
     //Here a list of tags is added in the Model type object
     //this list is then sent to 'images/image.html' file and the tags are displayed
-    @RequestMapping("/images/{title}")
-    public String showImage(@PathVariable("title") String title, Model model) {
-        Image image = imageService.getImageByTitle(title);
-        model.addAttribute("image", image);
-        model.addAttribute("tags", image.getTags());
-        model.addAttribute("comments",image.getComments());
-        return "images/image";
-    }
+//    @RequestMapping("/images/{title}")
+//    public String showImage(@PathVariable("title") String title, Model model) {
+//        Image image = imageService.getImageByTitle(title);
+//        model.addAttribute("image", image);
+//        model.addAttribute("tags", image.getTags());
+//        model.addAttribute("comments",image.getComments());
+//        return "images/image";
+//    }
     //Also now you need to add the tags of an image in the Model type object
     //Here a list of tags is added in the Model type object
     //this list is then sent to 'images/image.html' file and the tags are displayed
-    @RequestMapping("/imagesById/{id}")
-    public String showImageById(@PathVariable("id") Integer id, Model model, HttpSession session) {
+//    @RequestMapping("/imagesById/{id}")
+//    public String showImageById(@PathVariable("id") Integer id, Model model, HttpSession session) {
+//        Image image = imageService.getImage(id);
+//        List<Comment> comments = commentService.getCommentsByImageId(id);
+//        model.addAttribute("image", image);
+//        model.addAttribute("tags", image.getTags());
+//        model.addAttribute("comments",comments);
+//
+//        User user = (User) session.getAttribute("loggeduser");
+//        User imageOwner = image.getUser();
+//        if(user.getId() != imageOwner.getId()){
+//            String error = "Only the owner of the image can edit the image";
+//            model.addAttribute("editError", error);
+//        }
+//        return "images/image";
+//    }
+
+    @RequestMapping("/images/{id}")
+    public String showImageByImgId(@PathVariable("id") Integer id, Model model, HttpSession session) {
         Image image = imageService.getImage(id);
         List<Comment> comments = commentService.getCommentsByImageId(id);
         model.addAttribute("image", image);

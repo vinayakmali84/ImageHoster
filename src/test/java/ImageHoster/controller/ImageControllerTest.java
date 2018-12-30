@@ -1,4 +1,4 @@
-/*
+
 package ImageHoster.controller;
 
 import ImageHoster.model.Image;
@@ -28,6 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ImageController.class)
+
 public class ImageControllerTest {
     protected MockHttpSession session;
 
@@ -310,4 +311,3 @@ public class ImageControllerTest {
     }
 }
 
-*/
