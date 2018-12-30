@@ -64,9 +64,10 @@ public class ImageController {
     @RequestMapping("/imagesById/{id}")
     public String showImageById(@PathVariable("id") Integer id, Model model, HttpSession session) {
         Image image = imageService.getImage(id);
+        List<Comment> comments = commentService.getCommentsByImageId(id);
         model.addAttribute("image", image);
         model.addAttribute("tags", image.getTags());
-        model.addAttribute("comments",image.getComments());
+        model.addAttribute("comments",comments);
 
         User user = (User) session.getAttribute("loggeduser");
         User imageOwner = image.getUser();
