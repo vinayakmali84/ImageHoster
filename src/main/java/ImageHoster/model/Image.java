@@ -54,9 +54,11 @@ public class Image {
     //The attribute contains a list of all the Comments of an image
     //Note that no column will be generated for this attribute in the database instead a new table will be created
     //Since the mapping is Many to Many, a new table will be generated containing the two columns both referencing to the primary key of both the tables ('images', 'comments')
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Comment> comments = new ArrayList<>();
+    //@OneToMany(fetch = FetchType.LAZY)
+    //private List<Comment> comments = new ArrayList<>();
 
+    @OneToMany(mappedBy = "image", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private List<Comment> comments = new ArrayList<>();
 
     public Image() {
     }
@@ -138,7 +140,7 @@ public class Image {
         return comments;
     }
 
-    public void setComment(Comment comment) {
+    public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
 }
