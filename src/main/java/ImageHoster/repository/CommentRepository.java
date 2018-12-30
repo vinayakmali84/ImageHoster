@@ -41,9 +41,11 @@ public class CommentRepository {
     public List<Comment> getCommentsByImageId(Integer imageId) {
         EntityManager em = emf.createEntityManager();
         try {
-            //TypedQuery<Comment> typedQuery = em.createQuery("SELECT c from Comment c where c.image =:imageId", Comment.class).setParameter("id", imageId);
-            TypedQuery<Comment> typedQuery = em.createQuery("SELECT c from Comment c where c.image =:imageId", Comment.class);
-            return typedQuery.getResultList();
+
+            TypedQuery<Comment> typedQuery = em.createQuery("SELECT c from Comment c JOIN c.image i where i.id =:imageId", Comment.class).setParameter("imageId", imageId);
+//            TypedQuery<Comment> typedQuery = em.createQuery("SELECT c from Comment c where c.image =:imageId", Comment.class);
+            List<Comment> comments = typedQuery.getResultList();
+            return comments;
         } catch (NoResultException nre) {
             return null;
         }

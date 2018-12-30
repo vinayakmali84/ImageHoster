@@ -24,12 +24,11 @@ public class Comment {
 
     // Text is a Postgres specific column type that allows you to save
     // text based data that will be longer than 256 characters
-    @Column(columnDefinition = "TEXT")
+//    @Column(columnDefinition = "TEXT")
+//    private String description;
+
+    @Column(name = "comment")
     private String text;
-
-
-    @Column(name = "description")
-    private String description;
 
     @Column(name = "createdDate")
     private Date createdDate;
@@ -41,17 +40,6 @@ public class Comment {
     //Below annotation indicates that the name of the column in 'Comments' table referring the primary key in 'users' table will be 'user_id'
     @JoinColumn(name = "user_id")
     private User user;
-
-
-
-    // Write the annotation for many to many between images and tags where they are mapped by tags field in the images table
-    //The 'tags' table is mapped to 'images' table with Many:Many mapping
-    //One image can have multiple categories/tags and there can be multiple images under one category/tag
-    //FetchType is LAZY
-    //Note that no column will be generated for this attribute in the database instead a new table will be created
-    //Since the mapping is Many to Many, a new table will be generated containing the two columns both referencing to the primary key of both the tables ('images', 'tags')
-    //@ManyToMany(fetch = FetchType.LAZY, mappedBy = "comments")
-    //private List<Image> images;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -77,14 +65,6 @@ public class Comment {
         this.text = text;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Date getCreatedDate() {
         return createdDate;
     }
@@ -108,4 +88,5 @@ public class Comment {
     public void setImage(Image image) {
         this.image = image;
     }
+
 }
